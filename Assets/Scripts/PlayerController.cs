@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     CircleCollider2D _circleCollider2D;
     BoxCollider2D _boxCollider2D;
 
+    Animator _animator;
+
     float _jumpForce = 680.0f;
     float _walkForce = 30.0f;
     float _maxWalkSpeed = 2.0f;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _circleCollider2D = GetComponent<CircleCollider2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
+
+        _animator = GetComponent<Animator>();
 
         // 重力の設定
         _rigidbody2D.gravityScale = 3;
@@ -58,5 +62,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(key, 1, 1);
         }
+
+        // プレイヤーの速度に応じてアニメーション速度を変える
+        _animator.speed = speedX / 2.0f;
     }
 }
