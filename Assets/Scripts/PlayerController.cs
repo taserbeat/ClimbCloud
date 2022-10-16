@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -65,5 +66,11 @@ public class PlayerController : MonoBehaviour
 
         // プレイヤーの速度に応じてアニメーション速度を変える
         _animator.speed = speedX / 2.0f;
+
+        // 画面外に出たらシーンを読み込み直す(リセット)
+        if (_rigidbody2D.position.y < -10f)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
 }
