@@ -52,5 +52,11 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody2D.AddForce(transform.right * key * _walkForce);
         }
+
+        // 動く方向に応じて反転
+        if (key != 0)
+        {
+            transform.localScale = new Vector3(key, 1, 1);
+        }
     }
 }
