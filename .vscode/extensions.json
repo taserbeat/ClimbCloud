@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "ms-dotnettools.csharp",
+    "kreativ-software.csharpextensions",
+    "k--kato.docomment",
+    "foxundermoon.shell-format",
+    "redhat.vscode-xml",
+  ]
+}
