@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D _boxCollider2D;
 
     float _jumpForce = 680.0f;
+    float _walkForce = 30.0f;
+    float _maxWalkSpeed = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             _rigidbody2D.AddForce(transform.up * _jumpForce);
+        }
+
+        // 左右移動
+        var key = 0;
+        if (Input.GetKey(KeyCode.RightArrow)) key = 1;
+        if (Input.GetKey(KeyCode.LeftArrow)) key = -1;
+
+        // プレイヤーの速度
+        var speedX = Mathf.Abs(_rigidbody2D.velocity.x);
+
+        // スピード制限
+        if (speedX < _maxWalkSpeed)
+        {
+            _rigidbody2D.AddForce(transform.right * key * _walkForce);
         }
     }
 }
