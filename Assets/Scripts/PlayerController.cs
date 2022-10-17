@@ -73,4 +73,9 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("GameScene");
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("ゴールに到達");
+    }
 }
