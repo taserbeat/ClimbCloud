@@ -76,6 +76,6 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("ゴールに到達");
+        SceneManager.LoadScene("ClearScene");
     }
 }
