@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     Animator _animator;
 
     float _jumpForce = 680.0f;
-    float _walkForce = 30.0f;
-    float _maxWalkSpeed = 2.0f;
+    float _walkForce = 10.0f;
+    float _maxWalkSpeed = 1.2f;
 
     // Start is called before the first frame update
     void Start()
