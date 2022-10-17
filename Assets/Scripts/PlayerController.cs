@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // ジャンプする
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && _rigidbody2D.velocity.y == 0)
         {
             _rigidbody2D.AddForce(transform.up * _jumpForce);
         }
