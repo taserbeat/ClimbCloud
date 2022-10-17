@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 
     float _jumpForce = 680.0f;
     float _walkForce = 10.0f;
-    float _maxWalkSpeed = 1.2f;
+    float _maxWalkSpeed = 2.0f;
+    float _maxAirSpeed = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +53,18 @@ public class PlayerController : MonoBehaviour
         // プレイヤーの速度
         var speedX = Mathf.Abs(_rigidbody2D.velocity.x);
 
-        // スピード制限
-        if (speedX < _maxWalkSpeed)
+        // スピード制限(空中)
+        if (_rigidbody2D.velocity.y != 0)
+        {
+            // 空中でスピード制限に引っかかっていない場合のみ力を加える
+            // ただし、X軸の進行方向と逆への力は加わるようにする
+            if (speedX < _maxAirSpeed || _rigidbody2D.velocity.x * key < 0)
+            {
+                _rigidbody2D.AddForce(transform.right * key * 0.5f);
+            }
+        }
+        // スピード制限(地上)
+        else if (speedX < _maxWalkSpeed)
         {
             _rigidbody2D.AddForce(transform.right * key * _walkForce);
         }
